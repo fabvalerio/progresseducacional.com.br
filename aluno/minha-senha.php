@@ -59,8 +59,6 @@
                 </td></tr></tbody></table>
                 ';
 
-    
-
 
     
                 // Enviar Email
