@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 28-Dez-2021 às 17:57
+-- Tempo de geração: 30-Dez-2021 às 17:58
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 7.3.33
 
@@ -53,14 +53,6 @@ CREATE TABLE `aluno` (
   `classe_class_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Extraindo dados da tabela `aluno`
---
-
-INSERT INTO `aluno` (`aluno_id`, `aluno_id_onepay`, `aluno_nome`, `aluno_nascimento`, `aluno_sexo`, `aluno_cpf`, `aluno_rg`, `aluno_email`, `aluno_celular`, `aluno_telefone`, `aluno_senha`, `aluno_end`, `aluno_num`, `aluno_complemento`, `aluno_bairro`, `aluno_cidade`, `aluno_estado`, `aluno_cep`, `aluno_status`, `aluno_registro`, `aluno_tipo`, `aluno_esc_id`, `classe_class_id`) VALUES
-(1, 8412480, 'Fabio Valerio', '0000-00-00', 'M', '825.166.980-46', '421013813', 'valerio.fabio@gmail.com', '(12) 97410-5202', '', '123456', 'Avenida Dom Pedro I', '25', 'Bosque da Saúde', 'Casa', 'Taubaté', 'SP', '12082-000', 1, '2021-12-22 15:47:57', NULL, 8, NULL),
-(2, 8412481, 'Teste User 01', '1986-01-17', 'F', '182.445.690-50', '4210138951', 'valerio@uol.com', '(12) 97410-5202', '(33) 3333-3333', '123456', 'Rua Cataguazes', '25', NULL, 'Alto São Pedro', 'Taubaté', 'SP', '12082-770', 1, '2021-12-23 09:43:35', NULL, 8, NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -82,20 +74,6 @@ CREATE TABLE `aluno_cursos` (
   `cursos_pagmento_id` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Extraindo dados da tabela `aluno_cursos`
---
-
-INSERT INTO `aluno_cursos` (`cursos_id`, `curso_valor`, `cursos_registro`, `cursos_data_inicio`, `cursos_data_fim`, `cursos_data_dias`, `cursos_status`, `cursos_id_curso`, `aluno_aluno_id`, `cursos_codigo`, `cursos_tipo_pagamento`, `cursos_pagmento_id`) VALUES
-(9, 1293.99, '2021-12-23 10:41:00', NULL, NULL, NULL, 1, 13, 2, '#aluno-13-20211223104100', 1, '3387327'),
-(10, 1293.99, '2021-12-23 11:13:29', NULL, NULL, NULL, 1, 13, 2, '#aluno-13-20211223111329', 2, '9518070'),
-(11, 1293.99, '2021-12-23 11:17:45', NULL, NULL, NULL, 1, 13, 2, '#aluno-13-20211223111745', 2, '9518072'),
-(12, 1293.99, '2021-12-23 11:23:00', NULL, NULL, NULL, 1, 13, 2, '#aluno-13-20211223112300', 2, '9518075'),
-(13, 1293.99, '2021-12-23 11:24:37', NULL, NULL, NULL, 1, 13, 2, '#aluno-13-20211223112437', 2, '9518077'),
-(15, 1293.99, '2021-12-23 15:41:02', NULL, NULL, NULL, 0, 13, 2, '#aluno-13-20211223154102', 1, '9518087'),
-(16, 1293.99, '2021-12-27 11:39:21', NULL, NULL, NULL, 1, 13, 2, '#aluno-13-20211227113921', 2, '9518095'),
-(17, 1293.99, '2021-12-27 11:39:44', NULL, NULL, NULL, 0, 13, 2, '#aluno-13-20211227113944', 1, '9518096');
-
 -- --------------------------------------------------------
 
 --
@@ -107,16 +85,6 @@ CREATE TABLE `classe` (
   `class_nome` varchar(200) DEFAULT NULL,
   `escola_esc_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Extraindo dados da tabela `classe`
---
-
-INSERT INTO `classe` (`class_id`, `class_nome`, `escola_esc_id`) VALUES
-(1, '1-A', 8),
-(2, '1-B', 8),
-(3, '1-F', 8),
-(4, '1-Z', 8);
 
 -- --------------------------------------------------------
 
@@ -167,13 +135,6 @@ CREATE TABLE `curso` (
   `curso_categoria_cat_curso_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Extraindo dados da tabela `curso`
---
-
-INSERT INTO `curso` (`curso_id`, `curso_nome`, `curso_descricao`, `curso_valor`, `curso_status`, `curso_registro`, `curso_validade_dias`, `curso_validade_data_inicio`, `curso_validade_data_fim`, `curso_tipo`, `curso_categoria_cat_curso_id`) VALUES
-(13, 'Curso teste 01', 'TEste', 1293.99, 1, '2021-12-23 09:38:35', NULL, NULL, NULL, 1, 4);
-
 -- --------------------------------------------------------
 
 --
@@ -184,16 +145,6 @@ CREATE TABLE `curso_categoria` (
   `cat_curso_id` int(10) UNSIGNED NOT NULL,
   `cat_curso_nome` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Extraindo dados da tabela `curso_categoria`
---
-
-INSERT INTO `curso_categoria` (`cat_curso_id`, `cat_curso_nome`) VALUES
-(1, 'PÃ³s'),
-(2, 'FinanÃ§as Fundamental I'),
-(3, 'FinanÃ§as Fundamental II'),
-(4, 'Calculo II');
 
 -- --------------------------------------------------------
 
@@ -224,13 +175,6 @@ CREATE TABLE `escola` (
   `esc_status` tinyint(4) NOT NULL DEFAULT 1,
   `esc_registro` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Extraindo dados da tabela `escola`
---
-
-INSERT INTO `escola` (`esc_id`, `esc_nome`, `esc_fantasia`, `esc_cnpj`, `esc_end`, `esc_num`, `esc_complemento`, `esc_bairro`, `esc_cidade`, `esc_estado`, `esc_cep`, `esc_responsavel`, `esc_cargo`, `esc_cpf`, `esc_rg`, `esc_email`, `esc_senha`, `esc_telefone`, `esc_celular`, `esc_status`, `esc_registro`) VALUES
-(8, 'Progress Educacional LTDA ME', 'Progress Educacional', '11.111.111/1111-11', 'Avenida Dom Pedro I', '25', 'Casa', 'Bosque da Saude', 'Taubate', 'SP', '12082-000', 'Fabio Valerio', 'Diretor', '111.111.111-11', '1111111', 'fabio@agenciasupermkt.com.br', '123456', '(11) 1111-1111', '(11) 11111-1111', 1, '2021-11-16 15:12:45');
 
 -- --------------------------------------------------------
 
@@ -350,19 +294,19 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de tabela `aluno`
 --
 ALTER TABLE `aluno`
-  MODIFY `aluno_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `aluno_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `aluno_cursos`
 --
 ALTER TABLE `aluno_cursos`
-  MODIFY `cursos_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `cursos_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `classe`
 --
 ALTER TABLE `classe`
-  MODIFY `class_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `class_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `cupom`
@@ -380,25 +324,25 @@ ALTER TABLE `cupom_usado`
 -- AUTO_INCREMENT de tabela `curso`
 --
 ALTER TABLE `curso`
-  MODIFY `curso_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `curso_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `curso_categoria`
 --
 ALTER TABLE `curso_categoria`
-  MODIFY `cat_curso_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `cat_curso_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `escola`
 --
 ALTER TABLE `escola`
-  MODIFY `esc_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `esc_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `professores`
 --
 ALTER TABLE `professores`
-  MODIFY `prof_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `prof_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `usuario`

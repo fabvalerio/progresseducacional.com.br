@@ -993,44 +993,6 @@ Além disso, esses são os números de cartões que gerarão respostas específi
 
 
 
-## 👨‍💻 DEV
-
-
-
-## Telas/Tarefas
-
-| Status | Telas                                                      | Linguagem    |
-| :----: | ---------------------------------------------------------- | ------------ |
-|   ✔    | Tipo de Pagamentos                                         | HTML         |
-|   ✔    | Pagamentos via Cartão                                      | HTML/API     |
-|   ✔    | Registrar pagamento no banco de dados do cartão de crédito | SQL          |
-|   ✔    | Pagamentos via Boleto                                      | HTML/API     |
-|   ✔    | Registrar pagamento no banco de dados do Boleto            |              |
-|   ✔    | Registro de novo cliente                                   | HTML/SQL/API |
-|   ✔    | Consultar validade do token (Login)                        | API          |
-|   ✔    | Consultar dados da Progress (Login)                        | API          |
-|   ✔    | Status de pagamento                                        | HTML/API     |
-|   ✔    | Registrar ID venda                                         | SQL/API      |
-|   ✔    | Registrar/Gerar código da venda                            | SQL/API      |
-|   ✔    | Listar vendas Usuários                                     | HTML/SQL/API |
-|   ✔    | Relatório de vendas Master                                 | HTML/SQL/API |
-|   ✔    | Ativar cursos Gratuitos Manualmente                        | HTML/SQL     |
-|   ✔    | Verificar se usuário já está cadastrado no 1pay            | API          |
-|   ✔    | Criar cupom de desconto                                    | HTML/PHP/SQL |
-|   ✔    | Cupom na compra                                            | HTML/PHP/SQL |
-|   ✔    | Ativação e desativação de aulas manuais usuário master     | HTML/PHP/SQL |
-|   ✔    | Esqueci minha senha / escola                               | HTML/PHP/SQL |
-|   ✔    | Esqueci minha senha / alunos                               | HTML/PHP/SQL |
-|   🕑    | Integração disparo de email SMTP                           | PHP          |
-|   ✔    | Página para ativar os cursos AUTOMÁTICO VIA CRON           | PHP          |
-|   🕑    | Deploy                                                     |              |
-|   🕑    | Ativar o CRON                                              | Servidor     |
-|   🕑    | Criar link de redirecionamento para vídeo aula             |              |
-
-
-
-
-
 
 
 ## 📀 Alteração no banco de dados
@@ -1053,7 +1015,7 @@ Além disso, esses são os números de cartões que gerarão respostas específi
 
 
 
-# 💳 Pagamento com cartão de Crédito
+## 💳 Pagamento com cartão de Crédito
 
 **Front**
 
@@ -1093,7 +1055,7 @@ False: DANGER
 
 
 
-# 🎫 Pagamento com boleto
+## 🎫 Pagamento com boleto
 
 **Front**
 
@@ -1119,7 +1081,7 @@ JSON   back-end/enviar-venda-boleto.php
 
 
 
-# ☢ Cron Job
+## ☢ Cron Job
 
 
 
@@ -1128,6 +1090,60 @@ Script de verificação para baixa de boleto automático ao ser compensado pela 
 ```
 painel/script-cron-pagamentos.php
 ```
+
+
+
+## 🎯 Cupom - Regra
+
+Regra do Código de **Desconto** ao registrar o código é obrigatório adicionar ***<u>hashtag</u>*** que deverá ser digitado antes (**ex:** #cupom15off   **ou** #cupom15  )  e com todas as letras ***<u>mínusculas</u>***.
+
+
+
+![image-20211230135418452](C:\Users\fabva\AppData\Roaming\Typora\typora-user-images\image-20211230135418452.png)
+
+
+
+## 📩 E-mail MKT 
+
+- Lista de todas ações ao realizar o disparo de email marketing
+
+| Assunto                    | Diretório              |
+| -------------------------- | ---------------------- |
+| Esqueci minha senha aluno  | aluno/minha-senha.php  |
+| Esqueci minha senha escola | escola/minha-senha.php |
+|                            |                        |
+
+
+
+## 😝 Telas/Tarefas
+
+| Status | Telas                                                      | Linguagem    |
+| :----: | ---------------------------------------------------------- | ------------ |
+|   ✔    | Tipo de Pagamentos                                         | HTML         |
+|   ✔    | Pagamentos via Cartão                                      | HTML/API     |
+|   ✔    | Registrar pagamento no banco de dados do cartão de crédito | SQL          |
+|   ✔    | Pagamentos via Boleto                                      | HTML/API     |
+|   ✔    | Registrar pagamento no banco de dados do Boleto            |              |
+|   ✔    | Registro de novo cliente                                   | HTML/SQL/API |
+|   ✔    | Consultar validade do token (Login)                        | API          |
+|   ✔    | Consultar dados da Progress (Login)                        | API          |
+|   ✔    | Status de pagamento                                        | HTML/API     |
+|   ✔    | Registrar ID venda                                         | SQL/API      |
+|   ✔    | Registrar/Gerar código da venda                            | SQL/API      |
+|   ✔    | Listar vendas Usuários                                     | HTML/SQL/API |
+|   ✔    | Relatório de vendas Master                                 | HTML/SQL/API |
+|   ✔    | Ativar cursos Gratuitos Manualmente                        | HTML/SQL     |
+|   ✔    | Verificar se usuário já está cadastrado no 1pay            | API          |
+|   ✔    | Criar cupom de desconto                                    | HTML/PHP/SQL |
+|   ✔    | Cupom na compra                                            | HTML/PHP/SQL |
+|   ✔    | Ativação e desativação de aulas manuais usuário master     | HTML/PHP/SQL |
+|   ✔    | Esqueci minha senha / escola                               | HTML/PHP/SQL |
+|   ✔    | Esqueci minha senha / alunos                               | HTML/PHP/SQL |
+|   🕑    | Integração disparo de email SMTP                           | PHP          |
+|   ✔    | Página para ativar os cursos AUTOMÁTICO VIA CRON           | PHP          |
+|   🕑    | Deploy                                                     |              |
+|   🕑    | Ativar o CRON                                              | Servidor     |
+|   🕑    | Criar link de redirecionamento para vídeo aula             |              |
 
 
 
