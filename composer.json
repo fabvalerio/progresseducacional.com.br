@@ -1,0 +1,5 @@
+{
+    "require": {
+        "brunomoraisti/jwt-token": "^1.4"
+    }
+}

@@ -379,7 +379,7 @@
         //ENVIANDO
         $(".enviando").submit(function (event) {
 
-            $(".result-formulario").html('Enviando...');
+            $(".result-formulario").html('<div class="p-5 text-center text-danger bg-white rounded" style="width: 300px; position: fixed;z-index: 100;right: 10px;bottom: 10px;"><h3>Enviando...</h3></div>');
 
     		$.ajax({
     			url: "registrando.php",

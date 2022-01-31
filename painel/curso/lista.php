@@ -21,7 +21,7 @@ $InputSQL->execute();
 ?>
 
 <a class="btn btn-outline-warning" href="<?php echo $url?>">Voltar</a>
-<a class="btn btn-success" href="<?php echo $url?>!/curso/aluno-adquirir">Novo Curso</a>
+<a class="btn btn-success" href="<?php echo $url?>!/curso/aluno-adquirir">Comprar novo Curso</a>
 <hr>
 <h2 class="mb-3">Meus Aprendizados <small> (<?php echo $InputSQL->rowCount()?>)</small></h2>
 <hr>

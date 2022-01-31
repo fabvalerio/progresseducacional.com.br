@@ -16,10 +16,10 @@ define( '_dir_' , '/' );
 
 
   class db{
-  	private $host   = 'registro10.mysql.uhserver.com';
-  	private $dbName = 'registro10';
-  	private $user   = 'registro10';
-  	private $pass   = 'Site@12';
+  	private $host   = 'plataforma1.mysql.uhserver.com';
+  	private $dbName = 'plataforma1';
+  	private $user   = 'plataforma1';
+  	private $pass   = '@Site-12';
   	private $port   = '3307';
   	private $dbh;
   	private $error;

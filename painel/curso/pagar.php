@@ -56,7 +56,7 @@
                     $rowCup = $InputSQLCup->object();
 
 
-                    $valorPagar = number_format( $row->curso_valor - ( $row->curso_valor * ( $rowCup->cup_valor / 100 ) ), 2, '.', '');
+                    $valorPagar = $row->curso_valor - round( $row->curso_valor * ( $rowCup->cup_valor / 100 ), 2 );
 
                 }else{
                     $valorPagar = $row->curso_valor;

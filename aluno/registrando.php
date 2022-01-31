@@ -10,6 +10,10 @@ include('../painel/php/data.php');
 $dataNasc = dataSQL($_POST['aluno_nascimento']);
 
 
+// print_r($_POST);
+// exit();
+
+
 //Registrar usuário no onepay
 $data = array(
     "nome"           => $_POST['aluno_nome'],
@@ -107,7 +111,8 @@ $db->query("INSERT INTO
                     aluno_status,
                     aluno_nascimento,
                     aluno_sexo,
-                    aluno_id_onepay
+                    aluno_id_onepay,
+                    aluno_tipo
                 )
                 VALUES
                 (
@@ -130,10 +135,18 @@ $db->query("INSERT INTO
                     :aluno_status,
                     :aluno_nascimento,
                     :aluno_sexo,
-                    :aluno_id_onepay
+                    :aluno_id_onepay,
+                    :aluno_tipo
                 )
             ");
             
+//instituição
+if( !empty($_POST['aluno_esc_id']) ){
+    $istEsc =$_POST['aluno_esc_id'];
+}else{
+    $istEsc = NULL;
+}
+
 $db->bind(":aluno_registro",    date("Y-m-d H:i:s"));
 $db->bind(":aluno_nome",        $_POST['aluno_nome']);
 $db->bind(":aluno_cep",         $_POST['aluno_cep']);
@@ -143,7 +156,7 @@ $db->bind(":aluno_bairro",      $_POST['aluno_bairro']);
 $db->bind(":aluno_complemento", $_POST['aluno_complemento']);
 $db->bind(":aluno_cidade",      $_POST['aluno_cidade']);
 $db->bind(":aluno_estado",      $_POST['aluno_estado']);
-$db->bind(":aluno_esc_id",      $_POST['aluno_esc_id']);
+$db->bind(":aluno_esc_id",      $istEsc);
 $db->bind(":aluno_rg",          $_POST['aluno_rg']);
 $db->bind(":aluno_cpf",         $_POST['aluno_cpf']);
 $db->bind(":aluno_telefone",    $_POST['aluno_telefone']);
@@ -154,6 +167,7 @@ $db->bind(":aluno_status",      1);
 $db->bind(":aluno_nascimento",  $dataNasc);
 $db->bind(":aluno_sexo",        $_POST['aluno_sexo']);
 $db->bind(":aluno_id_onepay",   $idUserOnePay);
+$db->bind(":aluno_tipo",        $_POST['aluno_tipo']);
 
 
 if( $db->execute() ){

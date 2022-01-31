@@ -40,7 +40,7 @@ $cur = new db();
 $cur->query("SELECT c.curso_nome, a.cursos_registro, a.cursos_data_inicio, a.cursos_data_fim, a.cursos_tipo_pagamento, a.curso_valor
              FROM aluno_cursos AS a
              LEFT JOIN 
-                curso AS C
+                curso AS c
              ON c.curso_id = a.cursos_id_curso
              WHERE
                 a.cursos_id = '{$idCurso}'
@@ -130,12 +130,12 @@ $rowCup = $cupom->object();
                             <?php echo $rowCup->cup_nome; ?>
                         </td>
                     </tr>
-                    <tr>
+                    <!-- <tr>
                         <th>Desconto</th>
                         <td>
                             R$ <?php echo $calc ?>
                         </td>
-                    </tr>
+                    </tr> -->
                     <tr>
                         <th>Valor com Desconto</th>
                         <td>

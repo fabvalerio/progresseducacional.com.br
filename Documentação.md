@@ -1,22 +1,6 @@
-# Documentação API ONEPAY
+# Documentação de Integração 
 
-
-
-# ⚫ BACK-END
-
-
-
-| STATUS | DETALHES                             | OBSERVAÇÃO                             |      |
-| :----: | ------------------------------------ | -------------------------------------- | ---- |
-|   ✔    | Consultar token                      | Para iniciar a venda                   |      |
-|   ✔    | Registro da empresa                  | Dados da progress                      |      |
-|   ✔    | Saldo                                | Valor no Dashboard                     |      |
-|   ✔    | Novo Cliente                         | -                                      |      |
-|   ✔    | **Lista** de Vendas                  | -                                      |      |
-|   ✔    | Venda via crédito                    | -                                      |      |
-|   ✔    | Venda via débito                     | -                                      |      |
-|   ✔    | Status do pagamento (débito/crédito) | Status é feito encima da listas vendas |      |
-|        |                                      |                                        |      |
+Plataforma de gestão de cursos ProgressEducacional com API 1PAY
 
 
 
@@ -24,31 +8,36 @@
 
 [TOC]
 
-## 🧁 **CONFIGURAÇÃO**
+# BACK-END
+
+
+
+
+
+## **CONFIGURAÇÃO**
 
 A parte da configuração do estabelecimento e ambiente Sandbox está no arquivo)
 
-- ```
-  conf.php
-  ```
+```json
+/*
+** ROUTE
+** conf.php
+*/
 
+**API Endpoint**
+https://apidash.1pay.com.br/
 
-
-## 🍟 Class de **Conexão** (Dev)
-
-
-
-⭕ **Abertura de Class**
-
-```php
-class onepay {
-	.....
-}
+**Sandbox Endpoint**
+https://devapi.1pay.com.br/
 ```
 
 
 
-**⭕Leitura**
+## Class de **Conexão** (Dev)
+
+
+
+**⭕Leitura CURL**
 
 ```php
    public function api($url, $token, $method){
@@ -79,7 +68,7 @@ class onepay {
 
 
 
-**⭕ Envio**
+**⭕ Envio CURL **
 
 ```php
     public function send($url, $token, $data){
@@ -102,22 +91,38 @@ class onepay {
 
 
 
-### 🍜 Documentação online
+### Documentação online da 1Pay
 
 https://docs.1pay.com.br/
 
 
 
+#### INTRODUÇÃO
+
+A **API OnePay** está implementada em conformidade com o princípio de design **REST**. Nossa **API** possui recursos orientados a URLs, com códigos **HTTP** para indicar erros. Nós utilizamos funcionalidades **HTTP** nativas, como verbos de ação **POST**, **PUT**, **GET**, **DELETE**, para operações de leitura e escrita, bem como o modelo básico de autenticação **HTTP**.
+
+Nós suportamos chamadas diretas aos recursos da **API** a partir de outras origens, **CORS** (cross-origin resource sharing), permitindo você interagir de maneira segura com nossas **APIs** a partir de aplicações web, lembrando sempre de utilizar sua chave pública nesses casos, reservando sua chave secreta para chamadas internas de sistema. Todas as respostas da **API** estão no formato de dados **JSON**, incluindo errors.
+
+Para permitir que você possa explorar todos os serviços sem preocupação, nossas contas possuem chaves de acesso nos modos de produção (**LIVE**) e teste (**TEST**). Não é possível alternar entre modos, basta usar a chave apropriada para realizar operações em produção ou ambiente de teste. Chamadas feitas com chaves de teste não são processadas junto a instituições bancárias, facilitando o desenvolvimento.
+
+A **API REST** da **OnePay** fornece uma interface para os aplicativos interagirem com a plataforma, enviando e recebendo dados como objetos **JSON** (JavaScript Object Notation)
+
+Para usar a **API REST** da **Onepay**, você precisa de um **Token API**. Entre em contato com  [ti.adm@1pay.com.br](mailto:ti.adm@1pay.com.br) para solicitar seu **Token API**.
+
+A seguir, disponibilizamos uma **Collection** com todas as chamadas presentes nessa documentação. Link para as [chamadas de API](https://docs.1pay.com.br/assets/OnePay.postman_collection.json).
+Para poder abrir a **Collection**, será necessário utilizar a ferramenta [Postman](https://www.postman.com/). Para realizar o download da ferramenta **Postman**, [clique aqui](https://www.postman.com/downloads).
+
+
+
 ## ✅ CONSULTAR TOKEN 
 
-- ```
-  consultar-token.php
-  ```
-
 Requisição GET para o seguinte URL como objetos JSON:
-`https://apidash.1pay.com.br/estabelecimentos/{idEstabelecimento}/toke`
-`nheader: ContentType application/json`
-`authorization Bearer 'Token API'`
+
+```php
+https://apidash.1pay.com.br/estabelecimentos/{idEstabelecimento}/toke
+header: ContentType application/json
+authorization Bearer 'Token API'
+```
 
 
 
@@ -140,16 +145,24 @@ Requisição GET para o seguinte URL como objetos JSON:
 
 ## ✅ ESTABELECIMENTOS
 
-- ```
-  estabelecimento.php
-  ```
+```
+/**
+** ROUTE
+** estabelecimento.php
+**/
+```
 
 Os estabelecimentos representam pessoas ou empresas dentro do seu marketplace. Normalmente, os estabelecimentos oferecem uma variedade de mercadorias novas, usadas, remodeladas e colecionáveis on-line (cartão não presente) ou em lojas (cartão-presente). Você pode vincular seus cartões de crédito, cartões de débito, vouchers, contas bancárias e fazer transferências, transações (ou seja, débitos), reembolsos e muito mais...
 
 Requisição **POST** para o seguinte URL como objetos JSON:
-`https://apidash.1pay.com.br/estabelecimentos`
-`header: ContentType    `
-`application/jsonauthorization Bearer 'Token API'`
+
+```php
+https://apidash.1pay.com.br/estabelecimentos
+header: ContentType    
+application/jsonauthorization Bearer 'Token API'
+```
+
+
 
 #### PARAMETROS
 
@@ -195,9 +208,12 @@ Requisição **POST** para o seguinte URL como objetos JSON:
 ```
 
 Requisição **POST** para o seguinte URL como objetos JSON:
-`https://apidash.1pay.com.br/estabelecimentos`
-`header: ContentType application/json`
-`authorization Bearer 'Token API'`
+
+```php
+https://apidash.1pay.com.br/estabelecimentos
+header: ContentType application/json
+authorization Bearer 'Token API'
+```
 
 
 
@@ -262,14 +278,13 @@ Requisição **POST** para o seguinte URL como objetos JSON:
 
 ## ✅ CONSULTAR SALDO       
 
-- ```
-  saldo.php
-  ```
-
 Requisição GET para o seguinte URL como objetos JSON:
-`https://apidash.1pay.com.br/estabelecimentos/{idEstabelecimento}/saldo`
-`header: ContentType application/json`
-`authorization Bearer 'Token API'`
+
+```php
+https://apidash.1pay.com.br/estabelecimentos/{idEstabelecimento}/saldo
+header: ContentType application/json
+authorization Bearer 'Token API'
+```
 
 
 
@@ -295,14 +310,13 @@ Requisição GET para o seguinte URL como objetos JSON:
 
 ## ✅ LISTAR CONTA BANCÁRIA
 
-- ```
-  listar-conta-bancaria.php
-  ```
-
 Requisição GET como objetos JSON para o seguinte URL:
-`https://apidash.1pay.com.br/estabelecimentos/contas_bancarias`
-`header: ContentType application/json `
-`authorization Bearer 'Token API'`
+
+```php
+https://apidash.1pay.com.br/estabelecimentos/contas_bancarias
+header: ContentType application/json 
+authorization Bearer 'Token API'
+```
 
 
 
@@ -344,14 +358,15 @@ Requisição GET como objetos JSON para o seguinte URL:
 
 ## ✅ CRIAR UM NOVO CLIENTE
 
-- ```
-  novo-cliente.php
-  ```
-
 Requisição **POST** como objetos JSON para o seguinte URL:
-`https://apidash.1pay.com.br/clientes`
-`header: ContentType application/json`
-`authorization Bearer 'Token API'`
+
+```php
+https://apidash.1pay.com.br/clientes			
+header: ContentType application/json
+authorization Bearer 'Token API'
+```
+
+
 
 #### PARAMETROS
 
@@ -435,7 +450,7 @@ Requisição **POST** como objetos JSON para o seguinte URL:
 
 
 
-## 🍬 VENDAS
+## VENDAS
 
 Quando um cliente fornece um número de cartão, mas não tem acesso ao cartão físico, a compra é conhecida como uma transação de cartão não presente (CNP). Esse tipo de transação geralmente ocorre através da Internet ou através de um call center.
 
@@ -445,21 +460,19 @@ O recurso de transações é usado para debitar um cartão ou uma conta bancári
 
 ### ✅ NOVA VENDA VIA CARTÃO DE CRÉDITO
 
-- ```
-  venda-cartao-credito.php
-  ```
-
 Requisição **POST** como objetos JSON para o seguinte URL:
-`https://apidash.1pay.com.br/vendas`
-`header: ContentType application/jsona`
-`uthorization Bearer 'Token API'`
+
+```php
+https://apidash.1pay.com.br/vendas
+header: ContentType application/json
+uthorization Bearer 'Token API'
+```
 
 
 
 ⭕ **Exemplo de requisição de envio:**
 
 ```json
-
 {
   "tipoPagamentoId": 3,
   "valor": 500.00,
@@ -580,14 +593,13 @@ Exemplo :   "id": 9517983,
 
 ### ✅ VENDA VIA BOLETO CLIENTE JÁ CADASTRADO (VIA ID REGISTRO CLIENTE)
 
-- ```
-  venda-boleto.php
-  ```
-
 Requisição **POST** como objetos JSON para o seguinte URL:
-`https://apidash.1pay.com.br/vendas`
-`header: ContentType application/json`
-`authorization Bearer 'Token API'`
+
+```php
+https://apidash.1pay.com.br/vendas
+header: ContentType application/json
+authorization Bearer 'Token API'
+```
 
 O valor mínimo do boleto é R$ 5,00
 
@@ -600,7 +612,7 @@ O valor mínimo do boleto é R$ 5,00
 | tipoPagamentoId | int    | **1** = Boleto **2** = Débito(Não implementado) **3** = Cartão de crédito |
 | valor           | float  | Valor a ser transferido, utilizando **.(ponto)** em vez de **,(vírgula)** para casas decimais. Ex.: para transferir **R$ 100,00** utiliza-se **100.00** ; para **R$ 0,21** utiliza-se **0.21** |
 | dataVencimento  | date   | Data que o boleto irá vencer                                 |
-| descricao       | string | Descição da transação                                        |
+| descricao       | string | Descrição da transação                                       |
 | pedido_venda    | string | Número do pedido de venda no estabelecimento                 |
 | clienteId       | int    | Identificador do cliente já cadastrado                       |
 
@@ -642,7 +654,6 @@ O valor mínimo do boleto é R$ 5,00
     fbdd1ecad06868f34e4/e16ddd5d975edfbdd1ecad0.html"
   }
 }
-  
 ```
 
 
@@ -652,9 +663,12 @@ O valor mínimo do boleto é R$ 5,00
 ### ✅ LISTAR VENDAS
 
 Requisição GET como objetos JSON para o seguinte URL:
-`https://apidash.1pay.com.br/vendas`
-`header: ContentType application/json`
-`authorization Bearer 'Token API'`
+
+```php
+https://apidash.1pay.com.br/vendas
+header: ContentType application/json
+authorization Bearer 'Token API'
+```
 
 
 
@@ -831,14 +845,15 @@ Requisição GET como objetos JSON para o seguinte URL:
 
 ### ✅ CONSULTAR VENDA VENDAS
 
-- ```
-  consulta-vendas.php
-  ```
-
 Requisição GET como objetos JSON para o seguinte URL:
-`https://apidash.1pay.com.br/vendas/{pedidoId}`
-`header: ContentType application/json`
-`authorization Bearer 'Token API'`
+
+```php
+https://apidash.1pay.com.br/vendas/{pedidoId}
+header: ContentType application/json
+authorization Bearer 'Token API'
+```
+
+
 
 #### PARAMETROS
 
@@ -949,6 +964,8 @@ Requisição GET como objetos JSON para o seguinte URL:
 
 
 
+
+
 <hr style="background-color:red; height:3px">
 
 
@@ -957,17 +974,23 @@ Requisição GET como objetos JSON para o seguinte URL:
 
 
 
-# 🟢 Front-END
+# Front-END
 
 
+
+Dashboard de gerenciamento de **pagamentos,** **transações** e **recebimentos**.
+
+## ✅ Acesso teste ao dasboard 1Pay 
 
 https://devdash.1pay.com.br/
 Usuário: [testes@1pay.com.br](mailto:testes@1pay.com.br)
 Senha: 123456
 
+O ambiente do dashboard é de teste, ao aprovar toda a integração com a plataforma, será necessário entrar em contato com o suporte técnico 1Pay para ativação.
 
 
-## 💰 Ambiente de pagamento (SandBox)
+
+## ✅ Ambiente de pagamento (SandBox / Teste)
 
 Os seguintes números de cartão de crédito podem ser usados para simular transações em ambiente de teste (sandbox), para pagamentos bem-sucedidos:
 
@@ -993,117 +1016,62 @@ Além disso, esses são os números de cartões que gerarão respostas específi
 
 
 
-
-
-## 📀 Alteração no banco de dados
-
-
-
-| Tabela       | Nome                      | Tipo         | Nulo |         |
-| ------------ | ------------------------- | ------------ | ---- | ------- |
-| aluno        | aluno_nascimento          | date         | Não  | Inserir |
-| aluno        | aluno_sexo                | varchar(1)   | Não  | Inserir |
-| aluno        | aluno_estado              | varchar(2)   | Não  | Inserir |
-| aluno        | aluno_id_onepay           | int(11)      | Sim  | Inserir |
-| aluno_cursos | cursos_codigo             | varchar(100) | Não  | Inserir |
-| aluno_cursos | cursos_tipo_pagamento     | int(11)      | Não  | Inserir |
-| aluno_cursos | cursos_tipo_pagaemento_id | varchar(100) | Não  | Inserir |
-|              |                           |              |      |         |
-|              |                           |              |      |         |
-
-
-
-
-
-## 💳 Pagamento com cartão de Crédito
-
-**Front**
-
-```html
-HTML   front-end/pagamento-cartao.php
-
-JS 	   front-end/pagamento-cartao.js
-                /js/jquery.mask.js
-	               /jquery.maskMoney.js
-	               
-LESS   front-end/less/pagamento.less
-```
+## ✅ Pagamento com cartão de Crédito
 
 
 
 **Back retorno**
 
 ```
-JSON   back-end/enviar-venda-cartao-credito.php
+JSON   
+
+/**
+** ROUTE 
+** back-end/enviar-venda-cartao-credito.php
+**/
 ```
 
 
 
-![image-20211221162454203](C:\Users\fabva\AppData\Roaming\Typora\typora-user-images\image-20211221162454203.png)
-
-Retorno de mesmagem
-
-True : SUCCESS
-
-<div class="card card-body bg-success text-white"><h2>🥰 Pagamento realizado com sucesso!</h2></div>
-
-False: DANGER
-
-<div class="card card-body bg-danger text-white"><h2>😥 Ops! Ocorreu um erro. <br> '.$obj->error->message.'</h2></div>
-
-
-
-
-
-## 🎫 Pagamento com boleto
-
-**Front**
-
-```html
-HTML   front-end/pagamento-boleto.php
-
-JS 	   front-end/pagamento-boleto.js
-	               
-LESS   front-end/less/pagamento.boleto.less
-```
+## ✅ Pagamento com boleto
 
 
 
 **Back retorno**
 
 ```
-JSON   back-end/enviar-venda-boleto.php
+JSON   
+
+/**
+** ROUTE 
+** back-end/enviar-venda-boleto.php
+**/
 ```
 
 
 
-![image-20211221180607827](C:\Users\fabva\AppData\Roaming\Typora\typora-user-images\image-20211221180607827.png)
-
-
-
-## ☢ Cron Job
+## ✅ Cron Job
 
 
 
 Script de verificação para baixa de boleto automático ao ser compensado pela ONEPAY
 
 ```
-painel/script-cron-pagamentos.php
+/**
+** ROUTE
+** painel/script-cron-pagamentos.php
+**/
 ```
 
 
 
-## 🎯 Cupom - Regra
+## ✅ Cupom - Regra
 
 Regra do Código de **Desconto** ao registrar o código é obrigatório adicionar ***<u>hashtag</u>*** que deverá ser digitado antes (**ex:** #cupom15off   **ou** #cupom15  )  e com todas as letras ***<u>mínusculas</u>***.
 
 
 
-![image-20211230135418452](C:\Users\fabva\AppData\Roaming\Typora\typora-user-images\image-20211230135418452.png)
-
-
-
-## 📩 E-mail MKT 
+## ✅ E-mail MKT 
 
 - Lista de todas ações ao realizar o disparo de email marketing
 
@@ -1134,13 +1102,18 @@ Regra do Código de **Desconto** ao registrar o código é obrigatório adiciona
 
 
 
-# 🪂 SQL
+# ✅ SQL
 
 
 
-- painel/php/db.class.php
+```
+/**
+** ROUTE
+** painel/php/db.class.php
+**/
+```
 
-  
+
 
 | Versão     | 5.6                            |
 | ---------- | ------------------------------ |
@@ -1163,38 +1136,25 @@ Dados a ser alterado
 
 
 
+# Acesso as plataformas
+
+https://www.progresseducacional.com/registro/
 
 
-# 😝 Telas/Tarefas
 
-| Status | Telas                                                      | Linguagem    |
-| :----: | ---------------------------------------------------------- | ------------ |
-|   ✔    | Tipo de Pagamentos                                         | HTML         |
-|   ✔    | Pagamentos via Cartão                                      | HTML/API     |
-|   ✔    | Registrar pagamento no banco de dados do cartão de crédito | SQL          |
-|   ✔    | Pagamentos via Boleto                                      | HTML/API     |
-|   ✔    | Registrar pagamento no banco de dados do Boleto            |              |
-|   ✔    | Registro de novo cliente                                   | HTML/SQL/API |
-|   ✔    | Consultar validade do token (Login)                        | API          |
-|   ✔    | Consultar dados da Progress (Login)                        | API          |
-|   ✔    | Status de pagamento                                        | HTML/API     |
-|   ✔    | Registrar ID venda                                         | SQL/API      |
-|   ✔    | Registrar/Gerar código da venda                            | SQL/API      |
-|   ✔    | Listar vendas Usuários                                     | HTML/SQL/API |
-|   ✔    | Relatório de vendas Master                                 | HTML/SQL/API |
-|   ✔    | Ativar cursos Gratuitos Manualmente                        | HTML/SQL     |
-|   ✔    | Verificar se usuário já está cadastrado no 1pay            | API          |
-|   ✔    | Criar cupom de desconto                                    | HTML/PHP/SQL |
-|   ✔    | Cupom na compra                                            | HTML/PHP/SQL |
-|   ✔    | Ativação e desativação de aulas manuais usuário master     | HTML/PHP/SQL |
-|   ✔    | Esqueci minha senha / escola                               | HTML/PHP/SQL |
-|   ✔    | Esqueci minha senha / alunos                               | HTML/PHP/SQL |
-|   🕑    | Integração disparo de email SMTP                           | PHP          |
-|   ✔    | Página para ativar os cursos AUTOMÁTICO VIA CRON           | PHP          |
-|   ✔    | Deploy                                                     |              |
-|   🕑    | Ativar o CRON                                              | Servidor     |
-|   🕑    | Criar link de redirecionamento para vídeo aula             |              |
-|   🔴    | Inserir a class ao cadastrar usuário aluno                 | JS/SQL/HTML  |
+# Acesso ao acesso (alunos e escolas) homologação
+
+https://www.progresseducacional.com/homologacao/
+
+
+
+# Para finalizar
+
+| Status | Telas                                          | Linguagem |
+| :----: | ---------------------------------------------- | --------- |
+|   🕑    | Integração disparo de email SMTP               | PHP/SMTP  |
+|   🕑    | Ativar o CRON                                  | Servidor  |
+|   🕑    | Criar link de redirecionamento para vídeo aula |           |
 
 
 

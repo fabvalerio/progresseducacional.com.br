@@ -13,18 +13,18 @@ function sendThisMail($receber_emails,$assunto,$conteudo){
 
 	$mail = new PHPMailer(true);                              // Passing `true` enables exceptions
 	try {
-		  //Server settings
+	//Server settings
     $mail->CharSet   = 'UTF-8';
     $mail->SMTPDebug = false;                                 // Enable verbose debug output
     $mail->isSMTP();  
-    $mail->Host     = "smtps.uhserver.com";  // Specify main and backup SMTP servers   
+    $mail->Host     = "smtps.uhserver.com";                   // Specify main and backup SMTP servers   
     $mail->Username = "contato@progresseducacional.com";                 // SMTP username
-    $mail->Password = "Contato2021**";                           // SMTP password                          
-                                     // TCP port to connect to
+    $mail->Password = "Contato2021**";                        // SMTP password                        
+	// TCP port to connect to
     $mail->SMTPAuth = true; 
-    $mail->SMTPSecure = 'tls'; // Enable TLS encryption, `ssl` also accepted
+    $mail->SMTPSecure = 'tls';                                // Enable TLS encryption, `ssl` also accepted
     $mail->SMTPAutoTLS = false;
-    $mail->Port = 587;                                   // TCP port to connect to
+    $mail->Port = 587;                                        // TCP port to connect to
 
 		//Recipients
 		$mail->setFrom("contato@progresseducacional.com");
