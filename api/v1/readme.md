@@ -14,7 +14,7 @@ Caso de dúvida entre em contato com  fabio@agenciasupermkt.com.br ou Whatsapp 1
 
 Requisição **POST** para o seguinte URL como objetos JSON:
 
-`https://progresseducacional.com.br/registro/api/v1/lista-alunos-cursos.php `
+`https://progresseducacional.com.br/curso/api/v1/lista-alunos-cursos.php `
 
 `authorization Bearer : 'YsHi4_uFIueFFPJwmgJ2ABlXxH09POi8wQOoPJPhWwE' `
 

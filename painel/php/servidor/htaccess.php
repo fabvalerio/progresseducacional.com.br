@@ -9,10 +9,10 @@ if( $_SERVER['SERVER_NAME'] == 'localhost' ){ //SERVIDOR OFF
   $url = $server."/".$endereco[1].'';
   $url = str_replace('//', '/', $url);
   $url_site = "http://".$url.'/registro/';
-  $url = "http://".$url.'/registro/painel/';
+  $url = "http://".$url.'/curso/painel/';
 }else{ //SERVIDOR ON
-  $url = "http://".$_SERVER['SERVER_NAME']."/registro/painel/";
-  $url_site = "http://".$_SERVER['SERVER_NAME']."/registro/";
+  $url = "http://".$_SERVER['SERVER_NAME']."/curso/painel/";
+  $url_site = "http://".$_SERVER['SERVER_NAME']."/curso/";
 }
 
 
